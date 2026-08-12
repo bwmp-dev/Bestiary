@@ -1,0 +1,19 @@
+example_boss_drops:
+  # Per-player, evaluated per killer. A player who did not contribute at least
+  # a tenth of the damage gets nothing.
+  conditions:
+    - { type: damage_share, min: 0.10 }
+  distribution: per_killer
+  mode: all
+  drops:
+    - { item: minecraft:diamond, amount: "4-9" }
+    - { item: minecraft:netherite_scrap, chance: 0.08 }
+    - { table: example_shared_loot, chance: 1.0 }
+    - { exp: "200-350" }
+
+example_shared_loot:
+  mode: one_of
+  drops:
+    - { item: minecraft:golden_apple, amount: 2, weight: 6 }
+    - { item: minecraft:enchanted_golden_apple, weight: 1 }
+    - { item: minecraft:emerald, amount: "3-8", weight: 4 }

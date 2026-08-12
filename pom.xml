@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.bwmp</groupId>
+    <artifactId>bestiary</artifactId>
+    <version>1.0.0</version> <!-- x-release-please-version -->
+    <packaging>pom</packaging>
+
+    <name>Bestiary</name>
+    <description>A custom-mob and skill engine for Minecraft servers.</description>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!--
+        bestiary-api, bestiary-ai and bestiary-ai-nms are parented here and
+        depend on nothing that gets relocated. bestiary-plugin is parented to
+        keystone-parent instead, which is what gives it shading and relocation;
+        it is only aggregated here.
+    -->
+    <modules>
+        <module>bestiary-api</module>
+        <module>bestiary-ai</module>
+        <module>bestiary-ai-nms</module>
+        <module>bestiary-plugin</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--
+            The floor, and it is deliberately 1.19.4 rather than Keystone's
+            1.18.2: Paper's Goal API is verified present at 1.19.4 and custom AI
+            is half of what this plugin is for.
+        -->
+        <spigot.version>1.19.4-R0.1-SNAPSHOT</spigot.version>
+        <paper.version>1.19.4-R0.1-SNAPSHOT</paper.version>
+        <junit.version>5.10.2</junit.version>
+        <!--
+            Currently inert. bestiary-plugin is parented to keystone-parent, not
+            to this pom, so it inherits keystone.version from THERE. Kept in
+            sync so it cannot state something false.
+        -->
+        <keystone.version>1.0.2</keystone.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-site</id>
+            <name>maven-releases</name>
+            <url>https://nexus.bwmp.dev/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-site</id>
+            <name>maven-snapshots</name>
+            <url>https://nexus.bwmp.dev/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <!--
+            Keystone lives here. This does NOT help Maven find keystone-parent:
+            a parent is resolved before the child's repositories are read, so
+            that one has to come from settings.xml or a local install.
+        -->
+        <repository>
+            <id>bwmp-nexus</id>
+            <url>https://nexus.bwmp.dev/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>spigotmc</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.14.0</version>
+                    <configuration>
+                        <release>${java.version}</release>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

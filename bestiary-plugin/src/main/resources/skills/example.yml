@@ -1,0 +1,53 @@
+# Both definition forms parse to the identical tree, and mixing them in one
+# file is fine. Structured YAML is the canonical form; the GUI edits it and
+# writes it back.
+
+example_shockwave:
+  cooldown: 8s
+  skills:
+    - type: sound
+      sound: entity.generic.explode
+      targeter: { type: self }
+
+    - type: particle
+      shape: { type: ring, radius: 6, points: 48 }
+      particle: sweep_attack
+      targeter: { type: self_location }
+
+    - type: damage
+      amount: 9
+      ignore_armor: true
+      targeter:
+        type: players_in_radius
+        radius: 7
+      conditions:
+        - { type: on_ground }
+
+    - type: velocity
+      mode: away_from_origin
+      strength: 0.8
+      vertical: 0.35
+      targeter: { type: players_in_radius, radius: 7 }
+
+# The same skill in shorthand.
+example_shockwave_shorthand:
+  cooldown: 8s
+  skills:
+    - sound{s=entity.generic.explode} @self
+    - particle{shape={type=ring;radius=6;points=48};p=sweep_attack} @selfLocation
+    - damage{amount=9;ignoreArmor=true} @playersInRadius{r=7} ?onGround
+    - velocity{mode=awayFromOrigin;strength=0.8;vertical=0.35} @playersInRadius{r=7}
+
+# Expressions make level scaling and variable-driven skills possible.
+example_scaled_bolt:
+  skills:
+    - particle_trail{p=end_rod} @nearestPlayer{r=20}
+    - damage{amount=<caster.level> * 2.5 + <random.1to4>} @nearestPlayer{r=20}
+    - message{msg="<red><target.name> is at <target.hp.percent>%"} @nearestPlayer{r=20}
+
+example_enrage:
+  skills:
+    - potion{type=speed;duration=20s;level=2} @self
+    - potion{type=strength;duration=20s;level=1} @self
+    - particle{p=flame;shape={type=sphere;radius=2;points=60}} @selfLocation
+    - sound{s=entity.ravager.roar} @self

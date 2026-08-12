@@ -1,0 +1,76 @@
+name: Bestiary
+version: '${project.version}'
+main: dev.bwmp.bestiary.BestiaryPlugin
+api-version: '1.19'
+authors: [ bwmp ]
+description: A custom-mob and skill engine.
+softdepend: [ PlaceholderAPI, Sigil, Vault, WorldGuard, GriefPrevention, ModelEngine, Citizens, mcMMO, Jobs, AetherCore ]
+
+# Folia refuses to load any plugin that does not declare this, so the scheduler
+# abstraction would never get the chance to prove itself without it. The claim
+# is backed by there being no BukkitRunnable or Bukkit.getScheduler() call in
+# the plugin: every task goes through Keystone's scheduler at the owning entity
+# or region, threat tables and cooldowns are on ConcurrentHashMaps, and the
+# content registry is an immutable snapshot swapped behind a volatile field.
+folia-supported: true
+
+commands:
+  bestiary:
+    description: Manage Bestiary mobs and skills
+    aliases: [ bst, mobs ]
+    usage: /bestiary help
+
+permissions:
+  bestiary.admin:
+    description: Every Bestiary command, and spawning any mob
+    default: op
+    children:
+      bestiary.command.spawn: true
+      bestiary.command.kill: true
+      bestiary.command.reload: true
+      bestiary.command.cast: true
+      bestiary.command.anchor: true
+      bestiary.command.spawner: true
+      bestiary.command.droptable: true
+      bestiary.command.import: true
+      bestiary.command.debug: true
+      bestiary.command.platform: true
+  bestiary.command.spawn:
+    description: Spawn a Bestiary mob
+    default: op
+  bestiary.command.kill:
+    description: Remove live Bestiary mobs
+    default: op
+  bestiary.command.reload:
+    description: Reload Bestiary
+    default: op
+  bestiary.command.cast:
+    description: Cast a skill, with a live trace
+    default: op
+  bestiary.command.anchor:
+    description: Manage structure anchors
+    default: op
+  bestiary.command.spawner:
+    description: Manage placed spawners
+    default: op
+  bestiary.command.droptable:
+    description: Roll a drop table for testing
+    default: op
+  bestiary.command.import:
+    description: Convert MythicMobs configs
+    default: op
+  bestiary.command.debug:
+    description: Attach a live skill trace to a mob
+    default: op
+  bestiary.command.platform:
+    description: Show platform diagnostics
+    default: op
+  bestiary.command.list:
+    description: List loaded content
+    default: true
+  bestiary.command.info:
+    description: Inspect a definition
+    default: true
+  bestiary.command.menu:
+    description: Open the content browser
+    default: true

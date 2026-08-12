@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.bwmp</groupId>
+        <artifactId>bestiary</artifactId>
+        <version>1.0.0</version> <!-- x-release-please-version -->
+    </parent>
+
+    <artifactId>bestiary-ai</artifactId>
+    <name>Bestiary AI</name>
+    <description>Paper Goal API and Pathfinder layer, loaded reflectively when Paper is detected.</description>
+
+    <!--
+        paper-api is provided: this module is shaded into the one shipped jar
+        and its classes are only ever touched after Platform.classExists has
+        confirmed the Goal API is present. On Spigot they are never loaded.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>bestiary-api</artifactId>
+            <version>1.0.0</version> <!-- x-release-please-version -->
+        </dependency>
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>${paper.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

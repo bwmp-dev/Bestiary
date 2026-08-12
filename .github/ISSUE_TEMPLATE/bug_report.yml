@@ -1,0 +1,82 @@
+name: Bug report
+description: Something does not work the way it should
+labels: [ bug ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The single most useful thing you can include is
+        the output of `/bestiary platform` — Bestiary runs on 1.19.4 through
+        26.x across Spigot, Paper, Purpur and Folia, and picks a different
+        implementation on each. Most reports are impossible to place without it.
+
+  - type: textarea
+    id: platform
+    attributes:
+      label: Output of /bestiary platform
+      description: Run it in console or in game and paste the whole block.
+      render: text
+      placeholder: |
+        Server:   Purpur 26.1.2-2592-405ad83 (MC: 26.1.2)
+        Brand:    Purpur
+        Version:  26.1.2  [raw: 26.1.2.build.2592-stable]
+        Scheduler: Bukkit
+        AI tier:   Paper Goal API + NMS
+        Content:   12 mobs, 34 skills, 5 drop tables
+        Live mobs: 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: |
+        Steps, and the definition involved. If it concerns a specific mob or
+        skill, the contents of its file under `plugins/Bestiary/mobs/` or
+        `plugins/Bestiary/skills/` is worth more than a description of it.
+      placeholder: |
+        1. /bestiary spawn aether:valkyrie_champion
+        2. Drop it below 50% health
+        3. The phase change fires twice
+    validations:
+      required: true
+
+  - type: textarea
+    id: cast
+    attributes:
+      label: Output of /bestiary cast, or /bestiary debug
+      description: |
+        If a skill does the wrong thing, `/bestiary cast <skill>` runs it from
+        you with a live trace of targeter resolution and condition results, and
+        `/bestiary debug` attaches that trace to a running mob. A trace usually
+        identifies which node is at fault on its own.
+      render: text
+
+  - type: textarea
+    id: startup
+    attributes:
+      label: Bestiary's startup block
+      description: |
+        The lines Bestiary logs on enable, including any `[error]`, `[warn]` or
+        `[gate]` entries. A `[gate]` line means a feature was downgraded because
+        the server version could not do what was asked, which is often the whole
+        explanation. Custom AI in particular is unavailable on Spigot and says
+        so here.
+      render: text
+
+  - type: textarea
+    id: plugins
+    attributes:
+      label: Other plugins
+      description: |
+        Anything that touches mobs, spawning, damage, drops or protection —
+        including other mob engines. Those are where conflicts actually happen.

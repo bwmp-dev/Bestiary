@@ -1,0 +1,68 @@
+# Bestiary
+#
+# Content lives in skills/, mobs/, droptables/ and spawners/ next to this file.
+# Files nest as deeply as you like and merge into one namespace per directory,
+# except mobs/, where the first directory is the id's namespace:
+# mobs/aether/valkyrie_champion.yml defines aether:valkyrie_champion.
+
+# The four execution guards. Every one exists because skills call skills, and
+# a runaway tree is three config lines away.
+limits:
+  # A skill that calls itself is legal and useful; unbounded it is a stack
+  # overflow.
+  max-depth: 32
+  # A repeat inside a repeat over a 64-target targeter is a frozen server.
+  max-mechanics-per-execution: 4000
+  # The hard cap on every targeter, applied after its own limit.
+  max-targets: 64
+  # Wall clock per tick. A synchronous tree that exceeds this is suspended and
+  # resumed next tick with one throttled warning, not truncated.
+  tick-budget-ms: 5.0
+
+storage:
+  # sqlite or mysql. SQLite needs no configuration and no server running.
+  type: sqlite
+  file: bestiary.db
+  host: localhost
+  port: 3306
+  database: bestiary
+  user: root
+  password: ''
+
+anchors:
+  # Entity type -> mob id. A world generator places one of these where a boss
+  # belongs; Bestiary adopts it on chunk load, records the position, deletes the
+  # entity, and from then on spawns the boss on player proximity.
+  #
+  # marker, interaction, item_display, block_display, text_display and
+  # area_effect_cloud never spawn naturally, which is what makes them safe to
+  # claim. Identity is read from scoreboard tags first and from this map second.
+  types:
+    MARKER: bestiary:example_boss
+  # Tags are the better format where the generator can write them:
+  # a tag of "bestiary:aether/valkyrie_champion" names that mob directly.
+  tag-prefix: 'bestiary:'
+  respawn-cooldown: 30m
+  activation-range: 64
+  scan-period-ticks: 20
+
+performance:
+  # Particles are emitted per player, so this actually applies.
+  particles-per-player-per-tick: 400
+  particle-view-distance: 48
+  spawner-scan-period-ticks: 40
+  # A filter written slightly too wide is otherwise indistinguishable from a
+  # denial of service.
+  random-spawn-budget-per-world: 40
+
+hooks:
+  # A 400 HP boss distorts both economies, so its XP is suppressed by default.
+  suppress-mcmmo-xp: true
+  suppress-jobs-xp: true
+  # Citizens NPCs are never adopted as targets unless you ask for it.
+  target-citizens-npcs: false
+
+# Ships an example mob, skill and drop table on first run.
+builtin-content: true
+
+debug: false

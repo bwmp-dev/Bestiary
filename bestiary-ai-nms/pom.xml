@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.bwmp</groupId>
+        <artifactId>bestiary</artifactId>
+        <version>1.0.0</version> <!-- x-release-please-version -->
+    </parent>
+
+    <artifactId>bestiary-ai-nms</artifactId>
+    <name>Bestiary AI (NMS tier)</name>
+    <description>Navigation, move/look control and brain access reached through MethodHandles on Mojang-mapped Paper 1.20.5+.</description>
+
+    <!--
+        No compile-time server dependency, deliberately. No Mojang-mapped server
+        artifact is reachable from plain Maven: paperweight-userdev is
+        Gradle-only and would mean a second build system inside this reactor,
+        and no dev-bundle or paper-server jar exists in the local .m2.
+
+        So every NMS member is reached through MethodHandles resolved once at
+        load against Mojang-mapped names. If any handle fails to resolve the
+        whole tier disables itself with one report line rather than
+        half-working.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>bestiary-api</artifactId>
+            <version>1.0.0</version> <!-- x-release-please-version -->
+        </dependency>
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>${paper.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,49 @@
+# mobs/bestiary/example.yml defines bestiary:example_boss — the first directory
+# under mobs/ is the id's namespace.
+
+example_boss:
+  type: ravager
+  display: "<gradient:#e8d9a0:#c9a227>Example Champion</gradient>"
+  health: 200
+  damage: 10
+  armor: 8
+  knockback_resistance: 1.0
+  movement_speed: 0.28
+  follow_range: 40
+
+  options:
+    # false is the default and the right one: a custom mob that vanishes
+    # because a player walked 40 blocks away is never what was wanted.
+    despawn: false
+    prevent_other_drops: true
+    always_show_name: false
+
+  faction: example
+  threat: { enabled: true, decay: 0.05 }
+
+  ai:
+    goals:
+      - clear: [ MOVE, TARGET ]
+      - bestiary:melee_attack{speed=1.0}
+      - bestiary:look_at_target
+      - bestiary:return_to_anchor{distance=24}
+      - bestiary:avoid_void
+
+  phases:
+    - name: ground
+      until: { health_percent: "<= 60" }
+    - name: enraged
+      on_enter: example_enrage
+
+  skills:
+    - skill{s=example_shockwave} ~onTimer:160 ?phase{is=ground}
+    - skill{s=example_scaled_bolt} ~onTimer:100 ?phase{is=enraged}
+    - skill{s=example_enrage} ~onHealthThreshold:25
+
+  bossbar:
+    title: "<gold>Example Champion <gray>- <white><caster.hp.percent>%"
+    color: yellow
+    style: segmented_10
+    range: 48
+
+  drops: example_boss_drops

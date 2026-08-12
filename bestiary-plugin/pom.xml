@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Parented to keystone-parent, not to Bestiary's aggregator: that is what
+        supplies the shade plugin and the Keystone/Adventure relocations.
+
+        relativePath is deliberately empty, which forces Maven to resolve the
+        parent from a repository rather than from a path on disk. Maven reads a
+        parent before it reads the project's own <repositories>, so the Nexus
+        repository has to be known from settings.xml. See the README.
+
+        Deliberately carries no release-please annotation. This version belongs
+        to another repository, and annotating it would bump it in step with
+        Bestiary - pointing at a Keystone release that does not exist.
+    -->
+    <parent>
+        <groupId>dev.bwmp</groupId>
+        <artifactId>keystone-parent</artifactId>
+        <version>1.0.2</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>dev.bwmp</groupId>
+    <artifactId>bestiary-plugin</artifactId>
+    <version>1.0.0</version> <!-- x-release-please-version -->
+    <packaging>jar</packaging>
+
+    <name>Bestiary Plugin</name>
+
+    <properties>
+        <keystone.libs.package>dev.bwmp.bestiary.libs</keystone.libs.package>
+        <!--
+            Overrides keystone-parent's 1.18.2. Bestiary's floor is 1.19.4
+            because display entities and the Paper Goal API are both verified
+            there. A consumer requiring more than its framework is normal.
+        -->
+        <spigot.version>1.19.4-R0.1-SNAPSHOT</spigot.version>
+        <junit.version>5.10.2</junit.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>bestiary-api</artifactId>
+            <version>1.0.0</version> <!-- x-release-please-version -->
+        </dependency>
+        <!--
+            runtime scope, not compile. The AI modules are shaded into the one
+            shipped jar but must not be on this module's compile path: they
+            reference Paper types that do not exist on Spigot, and the only
+            thing that keeps one jar working on both is that plugin code
+            reaches them by name, behind a Platform.classExists probe.
+        -->
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>bestiary-ai</artifactId>
+            <version>1.0.0</version> <!-- x-release-please-version -->
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>bestiary-ai-nms</artifactId>
+            <version>1.0.0</version> <!-- x-release-please-version -->
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>keystone-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+            Compile-only, and the only hook that is not reached reflectively.
+            Providing an expansion means subclassing PlaceholderExpansion, which
+            reflection cannot do. The class is referenced from exactly one place,
+            behind a Platform.classExists probe, so it is never loaded on a
+            server without PlaceholderAPI.
+        -->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/releases/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <finalName>Bestiary-${project.version}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>plugin.yml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

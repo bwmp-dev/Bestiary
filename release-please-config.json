@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "bestiary",
+      "changelog-path": "CHANGELOG.md",
+      "include-component-in-tag": false,
+      "extra-files": [
+        "pom.xml",
+        "bestiary-api/pom.xml",
+        "bestiary-ai/pom.xml",
+        "bestiary-ai-nms/pom.xml",
+        "bestiary-plugin/pom.xml"
+      ]
+    }
+  }
+}

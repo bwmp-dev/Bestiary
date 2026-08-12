@@ -1,0 +1,4 @@
+prefix: '<gold>Bestiary <dark_gray>| <reset>'
+usage: '<gray>Try <white>/bestiary help<gray>.'
+no-permission: '<red>You do not have permission to do that.'
+player-only: '<red>Run that in-game.'

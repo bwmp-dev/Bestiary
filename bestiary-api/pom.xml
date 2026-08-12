@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.bwmp</groupId>
+        <artifactId>bestiary</artifactId>
+        <version>1.0.0</version> <!-- x-release-please-version -->
+    </parent>
+
+    <artifactId>bestiary-api</artifactId>
+    <name>Bestiary API</name>
+    <description>Public API for registering custom mobs, skills, mechanics, targeters and conditions with Bestiary.</description>
+
+    <!--
+        MUST NOT depend on Keystone, Adventure, or anything else that gets
+        relocated into bestiary-plugin's jar.
+
+        A third party compiling against this artifact would resolve
+        dev.bwmp.keystone.X, while the shipped Bestiary jar contains
+        dev.bwmp.bestiary.libs.keystone.X - a guaranteed NoClassDefFoundError
+        whose message names a class that looks entirely correct. Anything
+        Bestiary re-exposes publicly is re-declared in this module instead; see
+        BestiaryScheduler.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
