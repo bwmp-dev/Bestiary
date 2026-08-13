@@ -1,3 +1,17 @@
+# Changelog
+
+## 1.0.0 (2026-08-12)
+
+
+### Features
+
+* initial release of Bestiary ([3885add](https://github.com/bwmp-dev/Bestiary/commit/3885adde8d53fc6d96ae882d0c1874a78c71d5c6))
+
+
+### Miscellaneous Chores
+
+* seed release-please at 0.0.0 so the first release is 1.0.0 ([94312ad](https://github.com/bwmp-dev/Bestiary/commit/94312ad3f62ab7cf091a29eb7608519806fad872))
+
 ## Changelog
 
 Notable changes to Bestiary. Versions follow [semantic versioning](https://semver.org);
