@@ -58,7 +58,6 @@ public final class ImmunityService {
         windows.remove(entity.getUniqueId());
     }
 
-    /** Keeps the map from growing for the lifetime of the server. */
     public void purgeExpired() {
         long now = System.currentTimeMillis();
         windows.values().forEach(tables -> tables.values().removeIf(expiry -> expiry <= now));

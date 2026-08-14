@@ -6,7 +6,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.lang.reflect.Method;
 
-/** The {@code currency} mechanic, through whatever economy Vault is fronting. */
 public final class VaultHook {
 
     private Object economy;

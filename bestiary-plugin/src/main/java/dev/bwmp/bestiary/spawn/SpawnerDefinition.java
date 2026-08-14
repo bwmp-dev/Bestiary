@@ -62,7 +62,6 @@ public final class SpawnerDefinition {
         return cooldownTicks;
     }
 
-    /** Nothing spawns unless a player is within this distance. */
     public double activationRange() {
         return activationRange;
     }

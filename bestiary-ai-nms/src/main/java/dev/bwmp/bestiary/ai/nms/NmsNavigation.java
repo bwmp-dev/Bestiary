@@ -172,7 +172,6 @@ public final class NmsNavigation {
         }
     }
 
-    /** Wipes a brain's activities, which is how a Warden stops behaving like one. */
     public boolean clearBrain(LivingEntity entity) {
         Object brain = brainOf(entity);
         if (brain == null) {

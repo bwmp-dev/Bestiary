@@ -112,7 +112,6 @@ public final class Comparison {
         }
     }
 
-    /** String comparison, for {@code name}, {@code biome} and friends. */
     public boolean testString(String actual, SkillContext context, Target target) {
         String expected = value.asString(context, target);
         boolean equal = actual != null && actual.equalsIgnoreCase(expected.trim());

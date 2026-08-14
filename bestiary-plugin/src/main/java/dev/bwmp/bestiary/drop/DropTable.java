@@ -36,9 +36,7 @@ public final class DropTable {
     }
 
     public enum Distribution {
-        /** Each qualifying player rolls independently. */
         PER_KILLER,
-        /** One roll, dropped on the ground for whoever picks it up. */
         SHARED;
 
         public static Distribution parse(String value, Distribution fallback) {

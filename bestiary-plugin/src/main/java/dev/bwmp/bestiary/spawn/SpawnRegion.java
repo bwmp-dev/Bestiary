@@ -7,7 +7,6 @@ import org.bukkit.NamespacedKey;
 import java.util.List;
 import java.util.Map;
 
-/** A named volume with its own spawn table, for hand-built arenas. */
 public final class SpawnRegion {
 
     private final String id;

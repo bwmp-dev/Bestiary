@@ -23,12 +23,10 @@ public final class ExecutionLimits {
         this.budgetMillis = budgetMillis <= 0 ? Double.MAX_VALUE : budgetMillis;
     }
 
-    /** A skill that calls itself is legal and useful; unbounded it is a stack overflow. */
     public int maxDepth() {
         return maxDepth;
     }
 
-    /** A repeat inside a repeat over a 64-target targeter is 3 config lines and a frozen server. */
     public int maxMechanics() {
         return maxMechanics;
     }

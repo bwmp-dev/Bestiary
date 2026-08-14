@@ -35,7 +35,6 @@ import java.util.Map;
  */
 public final class MythicImporter {
 
-    /** What one import run produced. */
     public static final class Result {
         private final int converted;
         private final int skipped;
@@ -237,7 +236,6 @@ public final class MythicImporter {
         }
     }
 
-    /** MythicMobs condition lines end in {@code true} / {@code false}; Bestiary negates with {@code !}. */
     private static String stripTrailingBoolean(String line) {
         String lower = line.toLowerCase(Locale.ROOT);
         if (lower.endsWith(" false")) {

@@ -28,7 +28,6 @@ import java.util.Map;
  */
 public final class SkillParser {
 
-    /** Keys a structured mechanic map uses for itself; everything else is a parameter. */
     private static final List<String> RESERVED =
             List.of("type", "mechanic", "targeter", "target", "conditions", "trigger", "skills", "children");
 
@@ -68,7 +67,6 @@ public final class SkillParser {
         return new SkillDefinition(id, cooldown, conditions, lines, source, revision);
     }
 
-    /** One list entry, in whichever form it was written. */
     public static SkillNode parseNode(Object entry, String source) {
         if (entry == null) {
             throw new ParseException(source, "empty skill line");
@@ -295,7 +293,6 @@ public final class SkillParser {
         return false;
     }
 
-    /** Case- and underscore-insensitive key lookup, matching the parameter rules. */
     public static Object lookup(Map<String, Object> map, String key) {
         String normalized = ParameterSpec.normalize(key);
         for (Map.Entry<String, Object> entry : map.entrySet()) {

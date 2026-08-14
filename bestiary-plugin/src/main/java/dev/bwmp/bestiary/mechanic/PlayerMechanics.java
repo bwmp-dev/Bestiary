@@ -247,7 +247,6 @@ public final class PlayerMechanics {
         return Math.max(0.0d, Math.min(1.0d, value));
     }
 
-    /** Called on quit so a disconnected player's bars do not leak. */
     public static void forget(UUID player) {
         BARS.entrySet().removeIf(entry -> {
             if (!entry.getKey().startsWith(player.toString())) {

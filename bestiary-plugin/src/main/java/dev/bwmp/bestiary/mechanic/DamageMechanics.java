@@ -16,7 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Map;
 
-/** Damage and health. */
 public final class DamageMechanics {
 
     private DamageMechanics() {

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-/** Rolls drop tables and hands out what they produce. */
 public final class DropService {
 
     private static final int MAX_TABLE_DEPTH = 8;
@@ -204,7 +203,6 @@ public final class DropService {
         }
     }
 
-    /** For {@code /bestiary droptable test} and the {@code drop_table} mechanic. */
     public List<ItemStack> preview(DropTable table, MobInstance instance, Player recipient,
                                    SkillContext context, Location at) {
         List<ItemStack> items = new ArrayList<>();

@@ -549,7 +549,6 @@ public final class BestiaryCommand {
         messages.sendComponent(sender, KeystoneText.parse(miniMessage));
     }
 
-    /** The nearest Bestiary mob to a sender, for commands that take no id. */
     static MobInstance nearest(BestiaryPlugin plugin, Entity origin, double range) {
         MobInstance nearest = null;
         double best = range * range;

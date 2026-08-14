@@ -217,7 +217,6 @@ public final class MobInstance implements BestiaryMob {
 
     // --- triggers ---------------------------------------------------------
 
-    /** Runs every binding of {@code kind} whose parameter matches. */
     public void fire(TriggerKind kind, String parameter, Entity trigger, Cancellable event) {
         if (removed || entity == null || !entity.isValid()) {
             return;

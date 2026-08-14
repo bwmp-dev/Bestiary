@@ -6,7 +6,6 @@ import dev.bwmp.bestiary.api.skill.MechanicType;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Every built-in mechanic, in one map keyed by its canonical name. */
 public final class BuiltinMechanics {
 
     private BuiltinMechanics() {

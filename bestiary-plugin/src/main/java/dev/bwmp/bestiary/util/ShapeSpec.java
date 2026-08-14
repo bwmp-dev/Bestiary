@@ -81,7 +81,6 @@ public final class ShapeSpec {
         return kind;
     }
 
-    /** Generates the points for one execution, around {@code origin}. */
     public List<Location> points(SkillContext context, Target target, Location origin) {
         int count = Math.max(1, Math.min(2048, points.asInt(context, target)));
         double radiusValue = radius.asDouble(context, target);

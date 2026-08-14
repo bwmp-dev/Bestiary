@@ -9,7 +9,6 @@ import dev.bwmp.bestiary.api.skill.Target;
 
 import java.util.function.Function;
 
-/** The {@link dev.bwmp.bestiary.mechanic.Mechanics} pattern, for conditions. */
 public final class Conditions {
 
     @FunctionalInterface

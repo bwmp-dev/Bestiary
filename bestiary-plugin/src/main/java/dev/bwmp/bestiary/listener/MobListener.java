@@ -266,7 +266,6 @@ public final class MobListener implements Listener {
         PlayerMechanics.forget(event.getPlayer().getUniqueId());
     }
 
-    /** The player behind a hit, following a projectile back to its shooter. */
     private static Player playerBehind(Entity damager) {
         if (damager instanceof Player) {
             return (Player) damager;

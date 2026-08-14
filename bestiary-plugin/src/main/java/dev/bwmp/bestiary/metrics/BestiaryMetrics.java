@@ -69,7 +69,6 @@ public final class BestiaryMetrics {
         return ai.nmsAvailable() ? "Goal API + NMS" : "Goal API";
     }
 
-    /** The optional integrations that resolved, so a dead hook can be retired. */
     private static Map<String, Integer> integrations(Hooks hooks) {
         Map<String, Integer> present = new LinkedHashMap<>();
         record(present, "Sigil", hooks.sigil().present());
@@ -91,7 +90,6 @@ public final class BestiaryMetrics {
         }
     }
 
-    /** The plugins built on Bestiary, which is what decides whether the API is worth keeping. */
     private static Map<String, Integer> addons(BestiaryPlugin plugin) {
         String name = plugin.getName();
         Map<String, Integer> found = new LinkedHashMap<>();

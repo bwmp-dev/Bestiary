@@ -100,7 +100,6 @@ public final class SkillEditorMenu extends PaginatedMenu<SkillNode> {
                 click -> new BrowserMenu(plugin, BrowserMenu.View.SKILLS).open(click.player())));
     }
 
-    /** Replaces one line, from the parameter editor. */
     void replace(SkillNode previous, SkillNode replacement) {
         int index = lines.indexOf(previous);
         if (index >= 0) {

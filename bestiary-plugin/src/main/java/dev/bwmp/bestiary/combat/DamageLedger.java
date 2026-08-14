@@ -39,7 +39,6 @@ public final class DamageLedger {
         return total;
     }
 
-    /** 0..1. Zero total means nobody hit it, so nobody has a share. */
     public double shareOf(Player player) {
         double sum = total;
         return sum <= 0.0d ? 0.0d : dealtBy(player) / sum;

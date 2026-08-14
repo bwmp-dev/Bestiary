@@ -135,10 +135,6 @@ public final class BestiaryExpansion extends PlaceholderExpansion {
         return null;
     }
 
-    /**
-     * The boss this player is fighting: the nearest live mob whose threat table
-     * or damage ledger has them on it. Both are already in memory.
-     */
     private MobInstance engagedWith(Player player) {
         if (player == null) {
             return null;

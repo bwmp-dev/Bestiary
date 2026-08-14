@@ -572,7 +572,6 @@ public final class MobManager {
         run(instance, skill, trigger, event);
     }
 
-    /** A throwaway context for evaluating a mob's own phase conditions. */
     public SkillContext contextFor(MobInstance instance) {
         return engine.executor()
                 .newExecution(instance.entity(), null, instance.entity().getLocation(), null)
@@ -588,7 +587,6 @@ public final class MobManager {
         return Target.of(instance.entity());
     }
 
-    /** Every live mob of one definition, for {@code /bestiary kill}. */
     public List<MobInstance> byDefinition(NamespacedKey id) {
         List<MobInstance> matches = new ArrayList<>();
         for (MobInstance instance : active.values()) {

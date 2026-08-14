@@ -322,7 +322,6 @@ public final class BestiaryPlugin extends JavaPlugin implements Engine {
         registries.publish(snapshot);
     }
 
-    /** Re-reads everything and republishes. Live mobs are re-bound in place. */
     public void reloadBestiary() {
         mainConfig.reload();
         messages.reload();

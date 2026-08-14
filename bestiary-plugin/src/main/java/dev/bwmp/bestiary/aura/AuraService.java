@@ -22,7 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class AuraService {
 
-    /** One live aura on one entity. */
     public static final class Aura {
 
         private final AuraSpec spec;

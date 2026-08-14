@@ -5,7 +5,6 @@ import dev.bwmp.bestiary.api.skill.Mechanic;
 
 import java.util.List;
 
-/** One mechanic line, bound and ready to run. */
 public final class CompiledLine {
 
     private final String id;

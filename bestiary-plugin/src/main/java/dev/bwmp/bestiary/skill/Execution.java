@@ -384,10 +384,6 @@ public final class Execution {
         return frame == null ? "?" : frame.skill.id();
     }
 
-    /**
-     * A context with no skill behind it, for evaluating a condition list
-     * outside a skill — phase transitions, spawner gating, drop tables.
-     */
     public SkillContextImpl contextForConditions() {
         return new SkillContextImpl(this, "(conditions)", 1, List.of(), origin, 1.0d);
     }
@@ -404,7 +400,6 @@ public final class Execution {
         return aborted || stack.isEmpty();
     }
 
-    /** For {@code /bestiary debug}: the path of frames currently open. */
     public List<String> stackDescription() {
         List<String> description = new ArrayList<>();
         for (Frame frame : stack) {

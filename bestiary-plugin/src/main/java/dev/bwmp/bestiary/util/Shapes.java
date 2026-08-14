@@ -43,7 +43,6 @@ public final class Shapes {
         return locations;
     }
 
-    /** A hollow sphere, points placed on a Fibonacci lattice. */
     public static List<Location> sphere(Location centre, double radius, int points) {
         List<Location> locations = new ArrayList<>(Math.max(1, points));
         for (int index = 0; index < points; index++) {
@@ -106,7 +105,6 @@ public final class Shapes {
         return locations;
     }
 
-    /** Two spirals half a turn apart. */
     public static List<Location> helix(Location centre, double radius, double height, int points, double turns,
                                        int strands) {
         List<Location> locations = new ArrayList<>(Math.max(1, points) * Math.max(1, strands));
@@ -122,7 +120,6 @@ public final class Shapes {
         return locations;
     }
 
-    /** The twelve edges of an axis-aligned cube, sampled at {@code spacing}. */
     public static List<Location> cube(Location centre, double size, double spacing) {
         List<Location> locations = new ArrayList<>();
         double half = size / 2.0d;

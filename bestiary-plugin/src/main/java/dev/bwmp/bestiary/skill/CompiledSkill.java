@@ -2,7 +2,6 @@ package dev.bwmp.bestiary.skill;
 
 import java.util.List;
 
-/** A named skill, bound and ready to run. */
 public final class CompiledSkill {
 
     private final String id;

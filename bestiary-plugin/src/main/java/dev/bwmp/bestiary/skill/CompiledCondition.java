@@ -6,7 +6,6 @@ import dev.bwmp.bestiary.api.skill.Target;
 
 import java.util.List;
 
-/** A condition bound to its type, with negation applied by the engine. */
 public final class CompiledCondition {
 
     private final String id;
@@ -43,7 +42,6 @@ public final class CompiledCondition {
         return negated;
     }
 
-    /** All of them, which is what a bare condition list means. */
     public static boolean allPass(List<CompiledCondition> conditions, SkillContext context, Target target) {
         for (CompiledCondition condition : conditions) {
             if (!condition.test(context, target)) {

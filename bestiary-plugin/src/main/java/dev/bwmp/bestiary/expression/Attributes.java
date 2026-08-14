@@ -44,7 +44,6 @@ public final class Attributes {
         return resolved;
     }
 
-    /** Accepts either spelling, so config can say {@code max_health} or the old name. */
     public static Attribute byConfigName(String name) {
         if (name == null || name.isBlank()) {
             return null;

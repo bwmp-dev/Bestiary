@@ -5,7 +5,6 @@ import dev.bwmp.bestiary.skill.CompiledCondition;
 
 import java.util.List;
 
-/** One row of a drop table. */
 public final class DropEntry {
 
     public enum Kind {
@@ -38,7 +37,6 @@ public final class DropEntry {
         return kind;
     }
 
-    /** An item id, a nested table id, or a command line. */
     public String id() {
         return id;
     }

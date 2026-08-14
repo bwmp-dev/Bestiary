@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/** Reads one {@code droptables/} entry into a {@link DropTable}. */
 public final class DropTableParser {
 
     private DropTableParser() {

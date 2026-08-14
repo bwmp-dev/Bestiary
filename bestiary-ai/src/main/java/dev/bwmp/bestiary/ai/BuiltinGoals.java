@@ -469,7 +469,6 @@ public final class BuiltinGoals {
         return goals;
     }
 
-    /** Orbiting shared by strafe, hover_strafe and circle_target. */
     private static final class OrbitGoal implements AiGoal {
 
         private final AiContext context;

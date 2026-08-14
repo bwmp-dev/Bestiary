@@ -10,7 +10,6 @@ import dev.bwmp.bestiary.api.skill.TargeterType;
 import java.util.List;
 import java.util.function.Function;
 
-/** The {@link dev.bwmp.bestiary.mechanic.Mechanics} pattern, for targeters. */
 public final class Targeters {
 
     @FunctionalInterface

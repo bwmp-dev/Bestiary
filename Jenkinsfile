@@ -9,6 +9,7 @@
 // it would just quietly mean no custom AI on any server.
 mavenPlugin(
     artifacts: 'bestiary-plugin/target/Bestiary-*.jar,bestiary-api/target/bestiary-api-*.jar',
+    downloads: 'bestiary-plugin/target/Bestiary-*.jar',
     verify: [
         jar:       'bestiary-plugin/target/Bestiary-*.jar',
         relocated: ['dev/bwmp/bestiary/libs/keystone/', 'dev/bwmp/bestiary/libs/kyori/'],

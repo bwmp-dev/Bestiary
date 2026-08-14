@@ -39,7 +39,6 @@ public final class Throttle {
         lastSeen.clear();
     }
 
-    /** Keeps the map from growing for the lifetime of the server. */
     public void purge() {
         long cutoff = System.currentTimeMillis() - windowMillis;
         lastSeen.entrySet().removeIf(entry -> entry.getValue() < cutoff);

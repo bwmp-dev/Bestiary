@@ -75,7 +75,6 @@ public final class DebugService {
         watch.countsBySkill.merge(skillId, 1, Integer::sum);
     }
 
-    /** The timing summary, for the watcher who asked for it. */
     public java.util.List<String> timings(MobInstance instance) {
         Watch watch = byMob.get(instance.uniqueId());
         if (watch == null) {

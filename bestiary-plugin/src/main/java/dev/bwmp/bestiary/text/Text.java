@@ -19,14 +19,12 @@ public final class Text {
     private Text() {
     }
 
-    /** Admin-authored config text, full tag set. */
     public static String render(String miniMessage) {
         return miniMessage == null || miniMessage.isEmpty()
                 ? ""
                 : LegacyRenderer.renderMiniMessage(KeystoneText.legacyToMiniMessage(miniMessage));
     }
 
-    /** Formatting stripped, for logs, placeholders and numeric contexts. */
     public static String plain(String miniMessage) {
         if (miniMessage == null || miniMessage.isEmpty()) {
             return "";
@@ -34,7 +32,6 @@ public final class Text {
         return KeystoneText.plain(KeystoneText.parse(KeystoneText.legacyToMiniMessage(miniMessage)));
     }
 
-    /** Strips legacy section codes from a name the server handed back. */
     public static String stripLegacy(String legacy) {
         if (legacy == null || legacy.isEmpty()) {
             return "";

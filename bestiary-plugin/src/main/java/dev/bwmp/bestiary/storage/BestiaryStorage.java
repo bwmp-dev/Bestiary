@@ -254,7 +254,6 @@ public final class BestiaryStorage {
         run(() -> database.update("DELETE FROM bestiary_mob_state WHERE uuid = ?", uuid.toString()));
     }
 
-    /** Rows older than a day belong to mobs that no longer exist. */
     public void purgeStaleMobState() {
         long cutoff = System.currentTimeMillis() - 24L * 60 * 60 * 1000;
         run(() -> database.update("DELETE FROM bestiary_mob_state WHERE updated < ?", cutoff));
@@ -392,7 +391,6 @@ public final class BestiaryStorage {
         return values;
     }
 
-    /** A spawner as it is stored, kept separate from the compiled definition. */
     public static final class SpawnerRow {
         public String id;
         public String world;

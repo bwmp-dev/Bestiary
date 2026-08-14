@@ -263,7 +263,6 @@ public final class SpawnService {
 
     // --- editing ----------------------------------------------------------
 
-    /** Writes a spawner row created by {@code /bestiary spawner create}. */
     public void persist(SpawnerDefinition spawner) {
         BestiaryStorage.SpawnerRow row = new BestiaryStorage.SpawnerRow();
         row.id = spawner.id();

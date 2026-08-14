@@ -183,7 +183,6 @@ public final class AnchorService {
         engine.storage().saveAnchor(record);
     }
 
-    /** The mob is gone but not killed — a plugin removed it, or it fell out of the world. */
     public void forget(String anchorId) {
         AnchorRecord record = anchors.get(anchorId);
         if (record == null) {
@@ -264,7 +263,6 @@ public final class AnchorService {
         });
     }
 
-    /** Worlds whose anchors are currently indexed, for {@code /bestiary anchor list}. */
     public List<String> worlds() {
         List<String> names = new ArrayList<>();
         for (World world : Bukkit.getWorlds()) {

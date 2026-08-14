@@ -79,7 +79,6 @@ public final class ThreatTable {
         return threat.isEmpty();
     }
 
-    /** Applies the decay curve. Called from the mob's own task, not a global sweep. */
     public void decay() {
         long now = System.currentTimeMillis();
         double seconds = (now - lastDecay) / 1000.0d;
@@ -92,7 +91,6 @@ public final class ThreatTable {
         threat.entrySet().removeIf(entry -> entry.getValue() < 0.01d);
     }
 
-    /** Drops anyone out of range, dead or offline. */
     public void prune(LivingEntity mob, double range) {
         threat.keySet().removeIf(id -> {
             Player player = Bukkit.getPlayer(id);

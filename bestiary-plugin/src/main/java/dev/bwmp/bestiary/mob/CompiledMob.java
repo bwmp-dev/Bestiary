@@ -73,7 +73,6 @@ public final class CompiledMob {
         }
     }
 
-    /** One phase with its exit conditions bound. */
     public static final class Phase {
 
         private final PhaseDefinition definition;

@@ -89,7 +89,6 @@ public final class SkillExecutor {
         return true;
     }
 
-    /** Runs one mechanic line outside any skill, for {@code /bestiary cast}. */
     public Execution newExecution(Entity caster, Entity trigger, Location origin, Cancellable event) {
         return new Execution(this, caster, trigger, origin, event);
     }

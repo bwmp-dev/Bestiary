@@ -32,7 +32,6 @@ import java.util.Set;
  */
 public final class SpawnParser {
 
-    /** What one file's entries parsed into. */
     public static final class Result {
         public final Map<String, SpawnerDefinition> spawners = new LinkedHashMap<>();
         public final List<RandomSpawnRule> randomSpawns = new ArrayList<>();

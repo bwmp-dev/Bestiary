@@ -47,7 +47,6 @@ public final class ExpressionEngine {
         return this;
     }
 
-    /** Where warnings about unresolvable placeholders go. */
     public void onWarning(BiConsumer<String, String> warner) {
         this.warner = warner == null ? (source, message) -> {
         } : warner;
@@ -61,7 +60,6 @@ public final class ExpressionEngine {
         return Set.copyOf(byNamespace.keySet());
     }
 
-    /** A parameter used in a numeric context. */
     public Expression compileNumber(String source, String location) {
         return compile(source, location, true);
     }

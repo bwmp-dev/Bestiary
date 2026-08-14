@@ -30,7 +30,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-/** Reads one {@code mobs/} entry into a {@link MobDefinition}. */
 public final class MobParser {
 
     private MobParser() {

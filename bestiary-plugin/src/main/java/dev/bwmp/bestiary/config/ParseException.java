@@ -23,7 +23,6 @@ public class ParseException extends RuntimeException {
         this.location = location == null ? "" : location;
     }
 
-    /** File and YAML path, for the load report. */
     public String location() {
         return location;
     }

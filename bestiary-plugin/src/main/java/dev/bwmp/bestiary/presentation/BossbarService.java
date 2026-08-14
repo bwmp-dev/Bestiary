@@ -153,7 +153,6 @@ public final class BossbarService {
         bars.clear();
     }
 
-    /** For {@code bossbar_create} on an arbitrary player-facing bar. */
     public BossBar createStandalone(String miniMessageTitle, org.bukkit.boss.BarColor color,
                                     org.bukkit.boss.BarStyle style) {
         return Bukkit.createBossBar(Text.render(miniMessageTitle), color, style);
