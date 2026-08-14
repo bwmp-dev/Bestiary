@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/bwmp-dev/Bestiary/compare/v1.0.0...v1.1.0) (2026-08-14)
+
+
+### Features
+
+* add bStats and telemetry metrics ([85d8358](https://github.com/bwmp-dev/Bestiary/commit/85d8358c1334795d80688de8b341265b5ff488a0))
+
 ## 1.0.0 (2026-08-12)
 
 

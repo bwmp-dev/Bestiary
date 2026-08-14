@@ -7,7 +7,7 @@
     <parent>
         <groupId>dev.bwmp</groupId>
         <artifactId>bestiary</artifactId>
-        <version>1.0.0</version> <!-- x-release-please-version -->
+        <version>1.1.0</version> <!-- x-release-please-version -->
     </parent>
 
     <artifactId>bestiary-ai</artifactId>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>dev.bwmp</groupId>
             <artifactId>bestiary-api</artifactId>
-            <version>1.0.0</version> <!-- x-release-please-version -->
+            <version>1.1.0</version> <!-- x-release-please-version -->
         </dependency>
         <dependency>
             <groupId>io.papermc.paper</groupId>

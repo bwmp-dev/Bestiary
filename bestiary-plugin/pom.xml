@@ -26,7 +26,7 @@
 
     <groupId>dev.bwmp</groupId>
     <artifactId>bestiary-plugin</artifactId>
-    <version>1.0.0</version> <!-- x-release-please-version -->
+    <version>1.1.0</version> <!-- x-release-please-version -->
     <packaging>jar</packaging>
 
     <name>Bestiary Plugin</name>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>dev.bwmp</groupId>
             <artifactId>bestiary-api</artifactId>
-            <version>1.0.0</version> <!-- x-release-please-version -->
+            <version>1.1.0</version> <!-- x-release-please-version -->
         </dependency>
         <!--
             runtime scope, not compile. The AI modules are shaded into the one
@@ -58,13 +58,13 @@
         <dependency>
             <groupId>dev.bwmp</groupId>
             <artifactId>bestiary-ai</artifactId>
-            <version>1.0.0</version> <!-- x-release-please-version -->
+            <version>1.1.0</version> <!-- x-release-please-version -->
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>dev.bwmp</groupId>
             <artifactId>bestiary-ai-nms</artifactId>
-            <version>1.0.0</version> <!-- x-release-please-version -->
+            <version>1.1.0</version> <!-- x-release-please-version -->
             <scope>runtime</scope>
         </dependency>
         <dependency>
