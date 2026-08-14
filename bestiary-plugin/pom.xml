@@ -72,6 +72,10 @@
             <artifactId>keystone-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>dev.bwmp</groupId>
+            <artifactId>keystone-metrics</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <scope>provided</scope>

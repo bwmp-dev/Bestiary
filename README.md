@@ -159,6 +159,29 @@ session.
 The first three are generated from the declarations, so they cannot drift from
 what the engine accepts.
 
+## Metrics
+
+Bestiary reports to [bStats](https://bstats.org/plugin/bukkit/Bestiary/33366)
+and to a self-hosted endpoint at `plugins.metrics.bwmp.dev`, every 30 minutes:
+server software and Minecraft version, Java version, OS and core count, player
+count, and how much Bestiary is doing — mob, skill, droptable and spawner
+counts, live mob instances, storage backend, which of the three AI tiers the
+server ended up on, which optional integrations resolved, and which plugins
+depend on Bestiary.
+
+No addresses, no player names, no player UUIDs, no world data. The server is
+identified by a random UUID generated on first run and nothing else.
+
+One switch turns off both, and covers every Keystone plugin on the server:
+
+```yaml
+# plugins/Keystone/telemetry.yml
+enabled: false
+```
+
+Turning off bStats in `plugins/bStats/config.yml` also turns off the
+self-hosted half — one refusal covers both.
+
 ## Building
 
 ```

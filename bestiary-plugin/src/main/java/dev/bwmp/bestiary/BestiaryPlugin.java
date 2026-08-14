@@ -30,6 +30,7 @@ import dev.bwmp.bestiary.listener.MobListener;
 import dev.bwmp.bestiary.listener.SpawnListener;
 import dev.bwmp.bestiary.mechanic.BuiltinMechanics;
 import dev.bwmp.bestiary.mechanic.PlayerMechanics;
+import dev.bwmp.bestiary.metrics.BestiaryMetrics;
 import dev.bwmp.bestiary.mob.Keys;
 import dev.bwmp.bestiary.mob.MobInstance;
 import dev.bwmp.bestiary.mob.MobManager;
@@ -161,6 +162,10 @@ public final class BestiaryPlugin extends JavaPlugin implements Engine {
                 this, ServicePriority.Normal);
         registerExpansion();
         startTasks();
+
+        // Last, so every sampler it registers has something to read. Shutdown
+        // is wired to the Keystone handle, so there is nothing to undo.
+        BestiaryMetrics.start(this);
     }
 
     @Override
